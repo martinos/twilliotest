@@ -15,8 +15,7 @@ post '/' do
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Bonjour les amis', :voice => 'woman', :language => 'fr'
   end
-  text = response.text
-  puts "&&&&&&&&&&&&&&&&******************######################"
+  text = request.to_s
   puts text
   text
 end
