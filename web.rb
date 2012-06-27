@@ -17,7 +17,7 @@ post '/' do
   end
   text = request.to_s
   puts text
-  text
+  response.text
 end
 
 get '/' do
