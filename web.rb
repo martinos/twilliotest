@@ -41,7 +41,7 @@ post '/gather' do
     when 2
       r.Say "Salut Étienne, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", :language => 'fr'
     else
-      r.Say "Choix invalide"
+      r.Say "Choix invalide", :language => 'fr'
     end
   end
   response
