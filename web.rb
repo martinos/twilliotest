@@ -8,6 +8,7 @@ require 'twilio-ruby'
 require 'yaml'
 
 $stdout.sync = true
+
 post '/' do
   puts "POST OSTIE"
   response = Twilio::TwiML::Response.new do |r|
