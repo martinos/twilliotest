@@ -14,7 +14,10 @@ post '/' do
 #    end
 #  end
   response = Twilio::TwiML::Response.new do |r|
-    r.Say 'Bonjour les amis', :voice => 'woman', :language => 'fr'
+    r.Say 'Bonjour les amis!', :voice => 'woman', :language => 'fr'
+    r.Gather :action => "/gather" do |gather|
+      gather.Say "Entrez un nombre.", :voice => 'woman', :language => 'fr'
+    end
   end
   text = request.params.to_yaml
   puts text
@@ -24,4 +27,10 @@ end
 get '/' do
   puts "coco"
   "Hello world"
+end
+
+post '/gather' do
+  response = Twilio::TwiML::Response.new do |r|
+    r.Say "Bonjour les amis. Vous avez appuyé sur #{params[:Digits]}", :voice => 'woman', :language => 'fr'
+  end.text
 end
