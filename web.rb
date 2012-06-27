@@ -4,7 +4,7 @@ require "bundler/setup"
 require 'sinatra'
 require 'builder'
 require 'twilio-ruby'
-
+$stdout.sync = true
 post '/' do
 #  builder do |xml|
 #    xml.instruct!
@@ -22,5 +22,6 @@ post '/' do
 end
 
 get '/' do
-  puts "Hello world"
+  puts "coco"
+  "Hello world"
 end
