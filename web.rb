@@ -1,3 +1,4 @@
+# encoding: utf-8
 require "rubygems"
 require "bundler/setup"
 
@@ -20,8 +21,8 @@ post '/' do
 end
 
 get '/' do
-  puts "coco"
-  "Hello world"
+  puts "cocoé"
+  "Hello worldé"
 end
 
 post '/gather' do
