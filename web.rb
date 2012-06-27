@@ -4,6 +4,7 @@ require "bundler/setup"
 require 'sinatra'
 require 'builder'
 require 'twilio-ruby'
+require 'yaml'
 $stdout.sync = true
 post '/' do
 #  builder do |xml|
@@ -15,7 +16,7 @@ post '/' do
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Bonjour les amis', :voice => 'woman', :language => 'fr'
   end
-  text = request.to_s
+  text = request.params.to_yaml
   puts text
   response.text
 end
