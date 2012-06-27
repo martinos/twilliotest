@@ -31,6 +31,6 @@ end
 
 post '/gather' do
   response = Twilio::TwiML::Response.new do |r|
-    r.Say "Bonjour les amis. Vous avez appuyé sur #{params[:Digits]}", :voice => 'woman', :language => 'fr'
+    r.Say "Bonjour les amis. Vous avez appuye sur #{params[:Digits]}", :voice => 'woman', :language => 'fr'
   end.text
 end
