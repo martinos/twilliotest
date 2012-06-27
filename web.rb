@@ -14,9 +14,9 @@ post '/' do
 #  end
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Bonjour les amis', :voice => 'woman', :language => 'fr'
-#    r.Dial :callerId => '+15147560096' do |d|
-#      d.Client 'jenny'
-#    end
+    r.Dial :callerId => '+15147560096' do |d|
+      d.Client 'jenny'
+    end
   end
   response.text
 end
