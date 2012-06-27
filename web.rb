@@ -15,7 +15,8 @@ post '/' do
     end
   end
   puts request.params.to_yaml
-  response.text
+  puts xml = response.text
+  xml
 end
 
 get '/' do
