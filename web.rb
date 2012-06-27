@@ -6,13 +6,13 @@ require 'sinatra'
 require 'builder'
 require 'twilio-ruby'
 require 'yaml'
-
+require './logging_info'
 use Rack::CommonLogger
+use LoggingInfo
 
 $stdout.sync = true
 
 post '/' do
-  puts request.params.to_yaml
   builder = Builder::XmlMarkup.new(:indent=>2)
    
   response = builder.Response do |r|
@@ -22,7 +22,6 @@ post '/' do
       gather.Say "Si vous êtes Étienne Savard sur 2.", :language => 'fr'
     end
   end
-  puts response
   response
 end
 
@@ -32,7 +31,6 @@ get '/' do
 end
 
 post '/gather' do
-  puts request.params.to_yaml
   digits = params[:Digits]
 
   builder = Builder::XmlMarkup.new(:indent=>2)
@@ -44,7 +42,5 @@ post '/gather' do
       r.Say "Salut Étienne", :voice => 'woman', :language => 'fr'
     end
   end
-
-  puts response
   response
 end
