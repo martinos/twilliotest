@@ -38,9 +38,9 @@ post '/gather' do
   builder.Response do |r|
     case digits[0].to_i
     when 1
-      r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku"
+      r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", :voice => 'woman', :language => 'fr'
     when 2
-      r.Say "Salut Étienne"
+      r.Say "Salut Étienne", :voice => 'woman', :language => 'fr'
     end
   end
 end
