@@ -16,6 +16,7 @@ post '/' do
     r.Say 'Bonjour les amis', :voice => 'woman', :language => 'fr'
   end
   text = response.text
+  puts "Le message a ete logge"
   puts text
   text
 end
