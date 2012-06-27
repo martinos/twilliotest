@@ -7,6 +7,8 @@ require 'builder'
 require 'twilio-ruby'
 require 'yaml'
 
+use Rack::CommonLogger
+
 $stdout.sync = true
 
 post '/' do
@@ -15,7 +17,8 @@ post '/' do
   response = builder.Response do |r|
     r.Say 'Bonjour les amis!', :voice => 'woman', :language => 'fr'
     r.Gather :action => "/gather" do |gather|
-      gather.Say "Entrez un nombre suivit du dièse.", :voice => 'woman', :language => 'fr'
+      gather.Say "Si vous êtes Stéphane Hamel appuyez sur 1.", :voice => 'woman', :language => 'fr'
+      gather.Say "Si vous êtes Étienne Savard sur 2.", :language => 'fr'
     end
   end
   puts request.params.to_yaml
@@ -33,6 +36,11 @@ post '/gather' do
   puts request.params.to_yaml
   builder = Builder::XmlMarkup.new(:indent=>2)
   builder.Response do |r|
-    r.Say "Bonjour les amis. Vous avez appuyé sur #{digits}", :voice => 'woman', :language => 'fr'
+    case digits[0].to_i
+    when 1
+      r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku"
+    when 2
+      r.Say "Salut Étienne"
+    end
   end
 end
