@@ -3,6 +3,10 @@ require "bundler/setup"
 
 require 'sinatra'
 
+post '/' do
+  request.body.read
+end
+
 get '/' do
-  "Hello, world"
+  puts "Hello world"
 end
