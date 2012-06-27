@@ -6,6 +6,7 @@ require 'builder'
 require 'twilio-ruby'
 
 post '/' do
+  puts request.to_s
 #  builder do |xml|
 #    xml.instruct!
 #    xml.Response do |xml|
