@@ -17,7 +17,7 @@ post '/' do
    
   response = builder.Response do |r|
     r.Say 'Bonjour les amis!', :voice => 'woman', :language => 'fr'
-    r.Gather :action => "/gather" do |gather|
+    r.Gather :action => "/gather", :numDigits => 1  do |gather|
       gather.Say "Si vous êtes Stéphane Hamel appuyez sur 1.", :voice => 'woman', :language => 'fr'
       gather.Say "Si vous êtes Étienne Savard sur 2.", :language => 'fr'
     end
