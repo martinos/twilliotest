@@ -12,6 +12,7 @@ use Rack::CommonLogger
 $stdout.sync = true
 
 post '/' do
+  puts request.params.to_yaml
   builder = Builder::XmlMarkup.new(:indent=>2)
    
   response = builder.Response do |r|
@@ -21,7 +22,6 @@ post '/' do
       gather.Say "Si vous êtes Étienne Savard sur 2.", :language => 'fr'
     end
   end
-  puts request.params.to_yaml
   puts response
   response
 end
@@ -32,10 +32,11 @@ get '/' do
 end
 
 post '/gather' do
-  digits = params[:Digits]
   puts request.params.to_yaml
+  digits = params[:Digits]
+
   builder = Builder::XmlMarkup.new(:indent=>2)
-  builder.Response do |r|
+  response = builder.Response do |r|
     case digits[0].to_i
     when 1
       r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", :voice => 'woman', :language => 'fr'
@@ -43,4 +44,7 @@ post '/gather' do
       r.Say "Salut Étienne", :voice => 'woman', :language => 'fr'
     end
   end
+
+  puts response
+  response
 end
