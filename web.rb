@@ -18,6 +18,7 @@ post '/' do
 #      d.Client 'jenny'
 #    end
   end
+  response.text
 end
 
 get '/' do
