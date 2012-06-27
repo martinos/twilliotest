@@ -9,7 +9,7 @@ class LoggingInfo
     puts req.params.to_yaml
     status, headers, response = @app.call(env)
     puts "Response:"
-    puts response.to_s
+    puts response.first.to_s
     [status, headers, response]
   end
 end
