@@ -3,7 +3,7 @@ require "bundler/setup"
 
 require 'sinatra'
 require 'builder'
-require 'twillio-ruby'
+require 'twilio-ruby'
 
 post '/' do
 #  builder do |xml|
@@ -14,9 +14,9 @@ post '/' do
 #  end
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'hello there', :voice => 'woman'
-    r.Dial :callerId => '+15147560096' do |d|
-      d.Client 'jenny'
-    end
+#    r.Dial :callerId => '+15147560096' do |d|
+#      d.Client 'jenny'
+#    end
   end
 end
 
