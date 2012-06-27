@@ -9,6 +9,7 @@ require 'yaml'
 
 $stdout.sync = true
 post '/' do
+  puts "POST OSTIE"
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Bonjour les amis!', :voice => 'woman', :language => 'fr'
     r.Gather :action => "/gather" do |gather|
