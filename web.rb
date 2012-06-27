@@ -6,7 +6,6 @@ require 'builder'
 require 'twilio-ruby'
 
 post '/' do
-  puts request.to_s
 #  builder do |xml|
 #    xml.instruct!
 #    xml.Response do |xml|
@@ -16,7 +15,9 @@ post '/' do
   response = Twilio::TwiML::Response.new do |r|
     r.Say 'Bonjour les amis', :voice => 'woman', :language => 'fr'
   end
-  response.text
+  text = response.text
+  puts text
+  text
 end
 
 get '/' do
