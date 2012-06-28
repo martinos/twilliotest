@@ -38,7 +38,7 @@ post '/gather' do
     case digits[0].to_i
     when 1
       r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", :language => 'fr'
-      r.Say "Tu as appelé du numéro de téléphone suivant: #{params[:Caller].chars.to_a.join(' ')}", :language => 'fr'
+#      r.Say "Tu as appelé du numéro de téléphone suivant: #{params[:Caller].chars.to_a.join(' ')}", :language => 'fr'
     when 2
       r.Say "Salut Étienne, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", :language => 'fr'
     else
