@@ -14,7 +14,7 @@ use LoggingInfo
 $stdout.sync = true
 
 get '/' do
-  "Twilio Test Server"
+  "Production"
 end
 
 post '/call' do
