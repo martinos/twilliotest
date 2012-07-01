@@ -4,7 +4,6 @@ require "rubygems"
 require "bundler/setup"
 
 require 'sinatra'
-require 'builder'
 require 'twilio-ruby'
 require 'yaml'
 require 'logger'

@@ -9,7 +9,7 @@ require './lib/response_logger'
 require './lib/params_logger'
 require './lib/env_logger'
 require './lib/twilio_test'
-
+require 'sinatra'
 # logger = Logger.new(STDOUT)
 # #use Rack::ShowExceptions
 # #use ParamsLogger, logger
