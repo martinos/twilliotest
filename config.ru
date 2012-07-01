@@ -5,9 +5,9 @@ require 'rack'
 require 'logger'
 require 'thin'
 require 'yaml'
-require './lib/response_logger'
-require './lib/params_logger'
-require './lib/env_logger'
+require './lib/rack/response_logger'
+require './lib/rack/params_logger'
+require './lib/rack/env_logger'
 require './lib/twilio_test'
 
 logger = Logger.new(STDOUT)
