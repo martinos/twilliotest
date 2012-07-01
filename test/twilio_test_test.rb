@@ -6,7 +6,7 @@ require 'rack/test'
 
 ENV['RACK_ENV'] = 'test'
 
-class HelloWorldTest < Test::Unit::TestCase
+class TwilioTestTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
@@ -14,7 +14,8 @@ class HelloWorldTest < Test::Unit::TestCase
   end
 
   def test_call_method
-    post '/call'
+    receive_call
+    assert last_response.ok?
     expected = <<EOF
 <Response>
   <Say voice="woman" language="fr">Bonjour les amis!</Say>
@@ -25,6 +26,18 @@ class HelloWorldTest < Test::Unit::TestCase
 </Response>
 EOF
     assert_equal expected, last_response.body
+    post 'main_menu_selection', :Digits => '1'
+    assert last_response.ok?
+    expected = <<EOF
+<Response>
+  <Say voice="man" language="fr">Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku</Say>
+</Response>
+EOF
+    assert_equal expected, last_response.body
+  end
+  
+  def receive_call
+    post '/call'
   end
 
   # def test_it_says_hello_to_a_person
