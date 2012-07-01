@@ -10,6 +10,7 @@ require './lib/rack/params_logger'
 require './lib/rack/env_logger'
 require './lib/twilio_test'
 
+STDOUT.sync
 logger = Logger.new(STDOUT)
 #use Rack::ShowExceptions
 use ParamsLogger, logger
