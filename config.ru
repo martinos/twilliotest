@@ -16,9 +16,9 @@ logger = Logger.new($stdout)
 #use Rack::ShowExceptions
 use ParamsLogger, logger
 #use ResponseLogger, logger
-#use Rack::CommonLogger
+use Rack::CommonLogger
 use Rack::Logger
 use Rack::ShowStatus
 use Rack::Lint
-use EnvLogger, logger
+#use EnvLogger, logger
 run TwilioTest.new
