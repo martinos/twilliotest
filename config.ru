@@ -19,5 +19,5 @@ use ParamsLogger, logger
 use Rack::Logger
 use Rack::ShowStatus
 use Rack::Lint
-#use EnvLogger, logger
+use EnvLogger, logger
 run TwilioTest.new
