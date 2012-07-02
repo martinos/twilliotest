@@ -15,7 +15,7 @@ $stdout.sync = true
 logger = Logger.new($stdout)
 #use Rack::ShowExceptions
 use ParamsLogger, logger
-#use ResponseLogger, logger
+use ResponseLogger, logger
 use Rack::CommonLogger
 use Rack::Logger
 use Rack::ShowStatus
