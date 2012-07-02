@@ -7,10 +7,13 @@ require 'sinatra'
 require 'twilio-ruby'
 require 'yaml'
 require 'logger'
+require './lib/menu'
 
 #require './logging_info'
 
 class TwilioTest < Sinatra::Base
+  use Menu, "PPPPPPPPPPPPPP"
+  
   def logger
     request.logger
   end
@@ -27,7 +30,7 @@ class TwilioTest < Sinatra::Base
       female = {:voice => 'woman', :language => 'fr'} 
       r.Say 'Bonjour les amis!', female
       r.Gather :action => "/main_menu_selection", :numDigits => 1  do |gather|
-        gather.Say "Si vous êtes Stéphane Hamel appuyez sur 1.", female
+        gather.Say "Si m'appeler appuyez sur 1.", female
         gather.Say "Si vous êtes Étienne Savard sur 2. ", female
       end
     end
@@ -42,6 +45,11 @@ class TwilioTest < Sinatra::Base
     response = builder.Response do |r|
       case digits.chars.first
       when '1'
+        r.Dial do |dial|
+          dial.Number do
+            '415-123-4567'
+          end
+        end
         r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", male
   #      r.Say "Tu as appelé du numéro de téléphone suivant: #{params[:Caller].chars.to_a.join(' ')}", :language => 'fr'
       when '2'
