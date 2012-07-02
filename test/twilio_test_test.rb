@@ -20,7 +20,7 @@ class TwilioTestTest < Test::Unit::TestCase
 <Response>
   <Say voice="woman" language="fr">Bonjour les amis!</Say>
   <Gather action="/main_menu_selection" numDigits="1">
-    <Say voice="woman" language="fr">Si vous êtes Stéphane Hamel appuyez sur 1.</Say>
+    <Say voice="woman" language="fr">Si vous voulez appeler Martin Chabot appuyez sur 1.</Say>
     <Say voice="woman" language="fr">Si vous êtes Étienne Savard sur 2. </Say>
   </Gather>
 </Response>
@@ -30,7 +30,10 @@ EOF
     assert last_response.ok?
     expected = <<EOF
 <Response>
-  <Say voice="man" language="fr">Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku</Say>
+  <Dial>
+    <Number>514-756-0096</Number>
+  </Dial>
+  <Say voice="man" language="fr">Appel terminé</Say>
 </Response>
 EOF
     assert_equal expected, last_response.body

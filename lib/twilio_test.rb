@@ -25,12 +25,12 @@ class TwilioTest < Sinatra::Base
 
   post '/call' do
     builder = Builder::XmlMarkup.new(:indent=>2)
-     
+    
     response = builder.Response do |r|
       female = {:voice => 'woman', :language => 'fr'} 
       r.Say 'Bonjour les amis!', female
       r.Gather :action => "/main_menu_selection", :numDigits => 1  do |gather|
-        gather.Say "Si m'appeler appuyez sur 1.", female
+        gather.Say "Si vous voulez appeler Martin Chabot appuyez sur 1.", female
         gather.Say "Si vous êtes Étienne Savard sur 2. ", female
       end
     end
@@ -48,14 +48,15 @@ class TwilioTest < Sinatra::Base
         r.Dial do |dial|
           dial.Number'514-756-0096'
         end
-        r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", male
-  #      r.Say "Tu as appelé du numéro de téléphone suivant: #{params[:Caller].chars.to_a.join(' ')}", :language => 'fr'
+        r.Say "Appel terminé", male
       when '2'
         r.Say "Salut Étienne, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", male
       else
         r.Say "Choix invalide.", :language => 'fr'
       end
     end
+    puts response
+  
     response
   end
 end
