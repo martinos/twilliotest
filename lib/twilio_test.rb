@@ -46,9 +46,7 @@ class TwilioTest < Sinatra::Base
       case digits.chars.first
       when '1'
         r.Dial do |dial|
-          dial.Number do
-            '415-123-4567'
-          end
+          dial.Number'415-123-4567'
         end
         r.Say "Salut Stéphane, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", male
   #      r.Say "Tu as appelé du numéro de téléphone suivant: #{params[:Caller].chars.to_a.join(' ')}", :language => 'fr'
