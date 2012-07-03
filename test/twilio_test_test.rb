@@ -21,7 +21,7 @@ class TwilioTestTest < Test::Unit::TestCase
 <Response>
   <Say voice="woman" language="fr">Bonjour les amis!</Say>
   <Gather action="/main_menu_selection" numDigits="1">
-    <Say voice="woman" language="fr">Si vous voulez l'heure en temps local appuyez sur 1.</Say>
+    <Say voice="woman" language="fr">Si vous voulez l'heure locale appuyez sur 1.</Say>
     <Say voice="woman" language="fr">Si vous voulez l'heure universelle appuyez sur 2. </Say>
   </Gather>
 </Response>

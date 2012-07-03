@@ -30,7 +30,7 @@ class TwilioTest < Sinatra::Base
       female = {:voice => 'woman', :language => 'fr'} 
       r.Say 'Bonjour les amis!', female
       r.Gather :action => "/main_menu_selection", :numDigits => 1  do |gather|
-        gather.Say "Si vous voulez l'heure en temps local appuyez sur 1.", female
+        gather.Say "Si vous voulez l'heure locale appuyez sur 1.", female
         gather.Say "Si vous voulez l'heure universelle appuyez sur 2. ", female
       end
     end
