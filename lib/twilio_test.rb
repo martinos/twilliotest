@@ -30,8 +30,8 @@ class TwilioTest < Sinatra::Base
       female = {:voice => 'woman', :language => 'fr'} 
       r.Say 'Bonjour les amis!', female
       r.Gather :action => "/main_menu_selection", :numDigits => 1  do |gather|
-        gather.Say "Si vous voulez appeler Martin Chabot appuyez sur 1.", female
-        gather.Say "Si vous êtes Étienne Savard sur 2. ", female
+        gather.Say "Si vous voulez l'heure en temps local appuyez sur 1.", female
+        gather.Say "Si vous voulez l'heure universelle appuyez sur 2. ", female
       end
     end
     response
@@ -45,12 +45,10 @@ class TwilioTest < Sinatra::Base
     response = builder.Response do |r|
       case digits.chars.first
       when '1'
-        r.Dial do |dial|
-          dial.Number'514-756-0096'
-        end
-        r.Say "Appel terminé", male
+        now = Time.now
+        r.Say "Il est #{now.hour} heures #{now.min}", male
       when '2'
-        r.Say "Salut Étienne, je suis en train de faire un test avec Twilio, l'API est plutôt facile à utiliser et cette application roule sur Héroku", male
+        r.Say "Il est #{now.utc.hour} heures #{now.utc.min}", male
       else
         r.Say "Choix invalide.", :language => 'fr'
       end
