@@ -43,10 +43,10 @@ class TwilioTest < Sinatra::Base
     builder = Builder::XmlMarkup.new(:indent => 2)
     male = {:voice => 'man', :language => 'fr'} 
     response = builder.Response do |r|
+      now = Time.now
       case digits.chars.first
       when '1'
-        now = Time.now
-        r.Say "Il est #{now.hour} heures #{now.min}", male
+         r.Say "Il est #{now.hour} heures #{now.min}", male
       when '2'
         r.Say "Il est #{now.utc.hour} heures #{now.utc.min}", male
       else
